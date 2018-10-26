@@ -36,11 +36,11 @@ x_test = StandardScaler().fit_transform(x_test)
 lr = LogisticRegression(random_state = 0)
 
 pca = PCA()
-pipe = Pipeline(steps=[('pca', pca), ('logistic', logistic)])
+pipe = Pipeline(steps=[('pca', pca), ('logistic', lr)])
 
 # Parameters of pipelines can be set using ‘__’ separated parameter names:
 param_grid = {
-    'pca__n_components': [10, 20, 50, 100, 300, 500]
+    'pca__n_components': [10, 20, 50, 100, 300]
 }
 
 search = GridSearchCV(pipe, param_grid, iid=False, cv=5,
